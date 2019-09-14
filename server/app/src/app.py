@@ -1,12 +1,13 @@
 import simplejson
 from flask import Flask, request
+from flask_cors import CORS
 
 import models
 import remote
 import utils
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/authorize', methods=['POST'])
 def authorize():
