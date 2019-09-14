@@ -4,7 +4,7 @@ from exceptions import NoFaceFoundError
 from exceptions import TooManyFacesFoundError
 
 
-class TestCompareFunction(unittest.TestCase):
+class TestFindFunction(unittest.TestCase):
 
     def test_find_face(self):
         result = utils.find_face("./obama.jpg")
@@ -15,6 +15,10 @@ class TestCompareFunction(unittest.TestCase):
 
     def test_too_many_faces(self):
         self.assertRaises(TooManyFacesFoundError, utils.find_face, "./group.jpg")
+
+
+class TestCompareFunction(unittest.TestCase):
+    pass
 
 
 if __name__ == '__main__':
