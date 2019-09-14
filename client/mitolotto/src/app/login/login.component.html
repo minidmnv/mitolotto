@@ -11,8 +11,14 @@
     <button type="button" class="btn-light btn-lg" (click)="login()">Sign in</button>
   </div>
 
-  <div *ngIf="errorMsg != ''" class="alert alert-danger alert-dismissible fade show middle container" role="alert">
+  <div *ngIf="errorMsg != ''" class="alert alert-danger middle container" role="alert">
     {{errorMsg}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    </button>
+  </div>
+
+  <div *ngIf="loggedIn != ''" class="alert alert-success middle container" role="alert">
+    {{loggedIn}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     </button>
   </div>

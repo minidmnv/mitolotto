@@ -10,6 +10,7 @@ import {Credentials} from "./credentials";
 export class LoginComponent implements OnInit {
 
   errorMsg= '';
+  loggedIn= '';
   credentials: Credentials;
 
   constructor(private loginService: LoginService) {
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
   login(){
     console.log(this.credentials.login);
     console.log(this.credentials.password);
-    this.errorMsg = 'Nie rozpoznano twarzy na zdjeciu';
+    //this.errorMsg = 'Nie rozpoznano twarzy na zdjeciu';
+    this.loggedIn = 'Zalogowano'
   }
 
 }
