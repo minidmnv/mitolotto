@@ -9,10 +9,13 @@ from exceptions import TooManyFacesFoundError
 from exceptions import EmptyOrMissingPictureError
 
 
-def resize_image(source_path, destination_path):
-    image = Image.open(source_path)
+def resize_image(source):
+    image = Image.open(source)
     image.thumbnail((500, 500))
-    image.save(destination_path)
+
+    with io.BytesIO() as output:
+        image.save(output, image.format)
+        return io.BytesIO(output.getvalue())
 
 
 def find_face(image):
@@ -28,9 +31,9 @@ def find_face(image):
     raise TooManyFacesFoundError
 
 
-def compare_faces(known_image_path, unknown_image_path):
-    known_image = face_recognition.load_image_file(known_image_path)
-    unknown_image = face_recognition.load_image_file(unknown_image_path)
+def compare_faces(raw_known_image, raw_unknown_image):
+    known_image = face_recognition.load_image_file(raw_known_image)
+    unknown_image = face_recognition.load_image_file(raw_unknown_image)
 
     known_image_encoding = face_recognition.face_encodings(known_image)[0]
     unknown_image_encoding = face_recognition.face_encodings(unknown_image)[0]
@@ -43,4 +46,4 @@ def decode_img(image_base64):
         raise EmptyOrMissingPictureError
 
     image_base64 = base64.b64decode(image_base64)
-    return io.BytesIO(image_base64)
+    return resize_image(image_base64)
