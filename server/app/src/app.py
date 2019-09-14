@@ -1,5 +1,4 @@
-import json
-
+import simplejson
 from flask import Flask, request
 
 import models
@@ -15,9 +14,19 @@ def authorize():
 
     remote.authorize(user.username, user.password)
     buffer = utils.decode_img(user.image)
-    utils.find_face(buffer)
 
-    return json.dumps({'authorized': True, 'details': 'successfull'})
+    try:
+        found_face = utils.find_face(buffer)
+        if found_face:
+            details = 'successfull'
+        else:
+            details = 'unsuccessfull'
+
+    except Exception as exception:
+        found_face = False
+        details = type(exception).__name__
+
+    return simplejson.dumps(models.AuthorizeResponse(found_face, details).__dict__)
 
 
 if __name__ == '__main__':
