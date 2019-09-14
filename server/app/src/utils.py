@@ -4,9 +4,9 @@ import io
 import face_recognition
 
 from PIL import Image
-from io import StringIO
 from exceptions import NoFaceFoundError
 from exceptions import TooManyFacesFoundError
+from exceptions import EmptyOrMissingPictureError
 
 
 def resize_image(source_path, destination_path):
@@ -38,7 +38,9 @@ def compare_faces(known_image_path, unknown_image_path):
     return face_recognition.compare_faces([known_image_encoding], unknown_image_encoding)[0]
 
 
-def decode_img(msg):
-    msg = base64.b64decode(msg)
-    buf = io.BytesIO(msg)
-    return buf
+def decode_img(image_base64):
+    if not image_base64 or len(image_base64):
+        raise EmptyOrMissingPictureError
+
+    image_base64 = base64.b64decode(image_base64)
+    return io.BytesIO(image_base64)
