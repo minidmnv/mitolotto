@@ -1,5 +1,5 @@
 export class Credentials {
-  login: string;
+  username: string;
   password: string;
   image: any;
 }
