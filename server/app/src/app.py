@@ -1,10 +1,8 @@
+import simplejson
 from flask import Flask, request
 
-import base64
-import remote
 import models
-import base64
-import io
+import remote
 import utils
 
 app = Flask(__name__)
@@ -14,19 +12,24 @@ app = Flask(__name__)
 def authorize():
     user = models.User(request)
 
+    try:
+        request_face_buffer = utils.decode_img(user.image)
+        identity_document_buffer = utils.decode_img(remote.get_document(user.username))
 
-    remote.authorize(user.username, user.password)
-    utils.find_face(decode_img(user.image))
+        remote.authorize(user.username, user.password)
+        utils.find_face(request_face_buffer)
+        authorize_result = utils.compare_faces(identity_document_buffer, request_face_buffer)
 
-    return 'success!'
+        if authorize_result:
+            details = "authorization succeeded"
+        else:
+            details = "authorization failed"
 
+    except Exception as exception:
+        authorize_result = False
+        details = type(exception).__name__
 
-def decode_img(msg):
-    # msg = msg[msg.find(b"<plain_txt_msg:img>")+len(b"<plain_txt_msg:img>"):
-    #           msg.find(b"<!plain_txt_msg>")]
-    msg = base64.b64decode(msg)
-    buf = io.BytesIO(msg)
-    return buf
+    return simplejson.dumps(models.AuthorizeResponse(str(authorize_result), details).__dict__)
 
 
 if __name__ == '__main__':
