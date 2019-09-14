@@ -27,7 +27,7 @@ def authorize():
 
     except Exception as exception:
         authorize_result = False
-        details = type(exception).__name__
+        details = exception.args[0]
 
     return simplejson.dumps(models.AuthorizeResponse(str(authorize_result), details).__dict__)
 

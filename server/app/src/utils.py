@@ -27,8 +27,8 @@ def find_face(image):
         return True
 
     if found_faces <= 0:
-        raise NoFaceFoundError
-    raise TooManyFacesFoundError
+        raise NoFaceFoundError('There is no person on your photo')
+    raise TooManyFacesFoundError('There are too many people on your photo')
 
 
 def compare_faces(raw_known_image, raw_unknown_image):
@@ -43,7 +43,7 @@ def compare_faces(raw_known_image, raw_unknown_image):
 
 def decode_img(image_base64):
     if not image_base64 or len(image_base64):
-        raise EmptyOrMissingPictureError
+        raise EmptyOrMissingPictureError('Your photo is missing or empty')
 
     image_base64 = base64.b64decode(image_base64)
     return resize_image(image_base64)
