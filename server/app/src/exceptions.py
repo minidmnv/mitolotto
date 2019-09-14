@@ -5,3 +5,6 @@ class NoFaceFoundError(Exception):
 class TooManyFacesFoundError(Exception):
     pass
 
+
+class EmptyOrMissingPictureError(Exception):
+    pass
