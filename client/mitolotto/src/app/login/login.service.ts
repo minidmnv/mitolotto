@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders} from '@angular/common/http';
+import {Credentials} from "./credentials";
 
 const endpoint = 'http://localhost:3000/api/v1/';
 const httpOptions = {
@@ -9,6 +10,12 @@ const httpOptions = {
 
 
 export class LoginService {
-  constructor(private http: HttpClient) { }
+
+  credentials: Credentials;
+
+
+  constructor(private http: HttpClient) {
+    this.credentials = new Credentials();
+  }
 
 }

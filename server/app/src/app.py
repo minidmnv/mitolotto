@@ -21,9 +21,9 @@ def authorize():
         authorize_result = utils.compare_faces(identity_document_buffer, request_face_buffer)
 
         if authorize_result:
-            details = "authorization succeeded"
+            details = "success"
         else:
-            details = "authorization failed"
+            details = "failed"
 
     except Exception as exception:
         authorize_result = False
@@ -33,4 +33,4 @@ def authorize():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
