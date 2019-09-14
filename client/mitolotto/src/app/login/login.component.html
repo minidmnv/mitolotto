@@ -2,7 +2,7 @@
   <img src="assets/totalizator-sportowy-logo.png" width="30%" height="30%">
   <div class="container middle">
       <div class="form" id="login" style="margin-top: 5vh;">
-          <input type="text"  Placeholder="Username" required [(ngModel)]="loginService.credentials.login">
+          <input type="text"  Placeholder="Username" required [(ngModel)]="loginService.credentials.username">
           <input type="password"  Placeholder="Password" required [(ngModel)]="loginService.credentials.password">
       </div>
       <div class="box"><app-photo></app-photo></div>
@@ -11,13 +11,13 @@
     <button type="button" class="btn-light btn-lg" (click)="login()">Sign in</button>
   </div>
 
-  <div *ngIf="errorMsg != ''" class="alert alert-danger middle alert-container" role="alert">
+  <div *ngIf="errorMsg != ''" class="alert alert-danger text-center alert-container" role="alert">
     {{errorMsg}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     </button>
   </div>
 
-  <div *ngIf="loggedIn != ''" class="alert alert-success middle alert-container" role="alert">
+  <div *ngIf="loggedIn != ''" class="alert alert-success text-center alert-container" role="alert">
     {{loggedIn}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     </button>

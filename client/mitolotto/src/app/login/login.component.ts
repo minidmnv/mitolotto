@@ -20,10 +20,11 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    console.log(this.loginService.credentials.login);
+    console.log(this.loginService.credentials.username);
     console.log(this.loginService.credentials.password);
-    //this.errorMsg = 'Nie rozpoznano twarzy na zdjeciu';
-    this.loggedIn = 'Zalogowano'
+    this.errorMsg = 'Nie rozpoznano twarzy na zdjeciu';
+    //this.loggedIn = 'Zalogowano'
+    this.loginService.login();
   }
 
 }
