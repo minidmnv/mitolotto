@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LoginService} from "./login.service";
+import {Credentials} from "./credentials";
 
 @Component({
   selector: 'app-login',
@@ -8,13 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   errorMsg= '';
+  credentials: Credentials;
 
-  constructor() { }
+  constructor(private loginService: LoginService) {
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.credentials = new Credentials();
   }
 
   login(){
+    console.log(this.credentials.login);
+    console.log(this.credentials.password);
     this.errorMsg = 'Nie rozpoznano twarzy na zdjeciu';
   }
 

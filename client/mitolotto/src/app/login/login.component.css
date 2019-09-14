@@ -39,10 +39,10 @@ input {
 }
 
 
-#login form{
+#login #form{
   width: 250px;
 }
-#login, .logo{
+#login{
   display:inline-block;
   width:40%;
 }
@@ -57,7 +57,7 @@ input {
   line-height: 125px;
 }
 
-#login form span.fa {
+#login span.fa {
   background-color: #fff;
   border-radius: 3px 0px 0px 3px;
   color: #000;
@@ -70,11 +70,11 @@ input {
   width: 50px;
 }
 
-#login form input {
+#login input {
   height: 50px;
 }
 
-#login form input[type="text"], input[type="password"] {
+#login input[type="text"], input[type="password"] {
   background-color: #fff;
   border-radius: 0px 3px 3px 0px;
   color: #000;
@@ -83,7 +83,7 @@ input {
   width: 200px;
 }
 
-#login form input[type="submit"] {
+#login input[type="submit"] {
   border-radius: 3px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
