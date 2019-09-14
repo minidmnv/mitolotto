@@ -21,9 +21,14 @@ def find_face(image):
     if found_faces <= 0:
         raise NoFaceFoundError
     raise TooManyFacesFoundError
-    pass
 
 
-def compare_faces(known_image, unkown_image):
-    pass
+def compare_faces(known_image_path, unknown_image_path):
+    known_image = face_recognition.load_image_file(known_image_path)
+    unknown_image = face_recognition.load_image_file(unknown_image_path)
+
+    known_image_encoding =  face_recognition.face_encodings(known_image)[0]
+    unknown_image_encoding = face_recognition.face_encodings(unknown_image)[0]
+
+    return face_recognition.compare_faces(known_image_encoding, unknown_image_encoding)
 
