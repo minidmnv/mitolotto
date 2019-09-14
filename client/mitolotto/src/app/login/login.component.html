@@ -2,26 +2,28 @@
   <img class="middle" src="assets/totalizator-sportowy-logo.png" width="30%" height="30%">
   <div class="container middle">
       <div id="login">
-          <input type="text"  Placeholder="Username" required [(ngModel)]="credentials.login">
-          <input type="password"  Placeholder="Password" [(ngModel)]="credentials.password" required>
+        <form  method="get">
+          <input type="text"  Placeholder="Username" required>
+          <input type="password"  Placeholder="Password" required>
+        </form>
       </div>
-      <div class="box black"></div>
+      <div class="box"><app-photo #appPhoto></app-photo></div>
   </div>
   <div class="middle">
-    <button type="button" class="btn-light btn-lg" (click)="login()">Sign in</button>
+    <button type="button" class="btn-light btn-lg">Sign in</button>
+    <button type="button" *ngIf="show" class="btn-light btn-lg" (click)="appPhoto.capture()">Snap Photo</button>
+    <button type="button" *ngIf ="show" class="btn-light btn-lg" (click)="appPhoto.reload()">Reload</button>
+
+
+
+
   </div>
 
-  <div *ngIf="errorMsg != ''" class="alert alert-danger middle container" role="alert">
-    {{errorMsg}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    </button>
-  </div>
-
-  <div *ngIf="loggedIn != ''" class="alert alert-success middle container" role="alert">
-    {{loggedIn}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    </button>
-  </div>
+<!--  <div class="alert alert-danger alert-dismissible fade show middle container" role="alert">-->
+<!--    {{errorMsg}}-->
+<!--    <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--    </button>-->
+<!--  </div>-->
 
 
 </div>
