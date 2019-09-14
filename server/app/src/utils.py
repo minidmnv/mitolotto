@@ -45,5 +45,6 @@ def decode_img(image_base64):
     if not image_base64 or len(image_base64) <= 0:
         raise EmptyOrMissingPictureError
 
+    image_base64 = image_base64.replace("data:image/jpeg;base64,", "")
     image_base64 = base64.b64decode(image_base64)
     return resize_image(image_base64)
