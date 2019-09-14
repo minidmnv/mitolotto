@@ -2,7 +2,9 @@ import base64
 import io
 
 import face_recognition
+
 from PIL import Image
+from io import StringIO
 from exceptions import NoFaceFoundError
 from exceptions import TooManyFacesFoundError
 
