@@ -48,18 +48,13 @@ class TestCompareFunction(unittest.TestCase):
 
 class TestResizeFunction(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(self):
-        try:
-            remove("./tmp/obama_r.jpg")
-        except OSError as error:
-            print(error)
-
     def test_resize(self):
-        utils.resize_image("./images/obama.jpg", "./tmp/obama_r.jpg")
-        img = Image.open("./tmp/obama_r.jpg")
-        self.assertEqual(500, img.height)
-        self.assertEqual(400, img.width)
+        source = Base64Image.base64_to_bytesIO(Base64Image.PHOTO_FACE_01)
+        output = utils.resize_image(source)
+        image = Image.open(output)
+
+        self.assertEqual(500, image.height)
+        self.assertEqual(400, image.width)
 
 
 if __name__ == '__main__':
