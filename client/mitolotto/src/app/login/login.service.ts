@@ -1,9 +1,4 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-
-@Injectable({
-  providedIn: 'root'
-})
 
 const endpoint = 'http://localhost:3000/api/v1/';
 const httpOptions = {
