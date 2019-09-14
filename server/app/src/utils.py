@@ -1,3 +1,6 @@
+import base64
+import io
+
 import face_recognition
 from PIL import Image
 from exceptions import NoFaceFoundError
@@ -32,3 +35,8 @@ def compare_faces(known_image_path, unknown_image_path):
 
     return face_recognition.compare_faces([known_image_encoding], unknown_image_encoding)[0]
 
+
+def decode_img(msg):
+    msg = base64.b64decode(msg)
+    buf = io.BytesIO(msg)
+    return buf
