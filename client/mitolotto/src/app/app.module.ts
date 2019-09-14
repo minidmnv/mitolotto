@@ -8,13 +8,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {LoginService} from "./login/login.service";
 import { PhotoComponent } from './login/photo/photo.component';
+import { OcticonDirective } from './octicon.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PhotoComponent
+    PhotoComponent,
+    OcticonDirective
   ],
   imports: [
     BrowserModule,

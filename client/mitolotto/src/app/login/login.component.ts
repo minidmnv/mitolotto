@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   errorMsg= '';
   loggedIn= '';
+
   credentials: Credentials;
 
   constructor(private loginService: LoginService) {

@@ -113,8 +113,10 @@ input {
 }
 
 .box{
-  width:100px;
-  height:100px;
+  width:30vh;
+  height:30vh;
+  margin-left: 10vh;
+  margin-bottom: 0;
 }
 
 .black{

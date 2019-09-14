@@ -1,7 +1,10 @@
 
   <video #video id="video" autoplay></video>
-  <!-- <div><button id="snap" (click)="capture()">Snap Photo</button></div>
-  <div><button id="snap" (click)="reload()">reload</button></div>-->
 
-  <canvas #canvas id="canvas" width="640" height="480" hidden></canvas>
+  <canvas #canvas id="canvas" hidden></canvas>
+
+  <div style="width: 100%; text-align: center;">
+    <button type="button" style='margin: 0vw 0.5vw;' class="btn-light btn-sm" (click)="capture()"><span octicon="device-camera"></span></button>
+    <button type="button" style='margin: 0vw 0.5vw;' class="btn-light btn-sm" (click)="reload()"><span octicon="sync"></span></button>
+  </div>
 

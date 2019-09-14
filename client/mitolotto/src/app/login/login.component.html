@@ -2,20 +2,15 @@
   <img class="middle" src="assets/totalizator-sportowy-logo.png" width="30%" height="30%">
   <div class="container middle">
       <div id="login">
-        <form  method="get">
+        <form  method="get" style="margin-top: 5vh;">
           <input type="text"  Placeholder="Username" required>
           <input type="password"  Placeholder="Password" required>
         </form>
       </div>
-      <div class="box"><app-photo #appPhoto></app-photo></div>
+      <div class="box"><app-photo></app-photo></div>
   </div>
   <div class="middle">
     <button type="button" class="btn-light btn-lg">Sign in</button>
-    <button type="button" *ngIf="show" class="btn-light btn-lg" (click)="appPhoto.capture()">Snap Photo</button>
-    <button type="button" *ngIf ="show" class="btn-light btn-lg" (click)="appPhoto.reload()">Reload</button>
-
-
-
 
   </div>
 
@@ -24,6 +19,7 @@
 <!--    <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
 <!--    </button>-->
 <!--  </div>-->
+
 
 
 </div>
