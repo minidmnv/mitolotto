@@ -1,11 +1,9 @@
 <div class="main text-center">
   <img src="assets/totalizator-sportowy-logo.png" width="30%" height="30%">
   <div class="container middle">
-      <div id="login">
-        <form  method="get" style="margin-top: 5vh;">
-          <input type="text"  Placeholder="Username" required>
-          <input type="password"  Placeholder="Password" required>
-        </form>
+      <div class="form" id="login" style="margin-top: 5vh;">
+          <input type="text"  Placeholder="Username" required [(ngModel)]="loginService.credentials.login">
+          <input type="password"  Placeholder="Password" required [(ngModel)]="loginService.credentials.password">
       </div>
       <div class="box"><app-photo></app-photo></div>
   </div>
