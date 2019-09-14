@@ -12,21 +12,24 @@ app = Flask(__name__)
 def authorize():
     user = models.User(request)
 
-    remote.authorize(user.username, user.password)
-    buffer = utils.decode_img(user.image)
-
     try:
-        found_face = utils.find_face(buffer)
-        if found_face:
-            details = 'successfull'
+        request_face_buffer = utils.decode_img(user.image)
+        identity_document_buffer = utils.decode_img(remote.get_document(user.username))
+
+        remote.authorize(user.username, user.password)
+        utils.find_face(request_face_buffer)
+        authorize_result = utils.compare_faces(identity_document_buffer, request_face_buffer)
+
+        if authorize_result:
+            details = "authorization succeeded"
         else:
-            details = 'unsuccessfull'
+            details = "authorization failed"
 
     except Exception as exception:
-        found_face = False
+        authorize_result = False
         details = type(exception).__name__
 
-    return simplejson.dumps(models.AuthorizeResponse(found_face, details).__dict__)
+    return simplejson.dumps(models.AuthorizeResponse(str(authorize_result), details).__dict__)
 
 
 if __name__ == '__main__':
