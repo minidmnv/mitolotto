@@ -3,7 +3,7 @@
   <div class="container middle">
       <div class="form" id="login" style="margin-top: 5vh;">
           <input type="text"  Placeholder="Username" required [(ngModel)]="loginService.credentials.username">
-          <input type="password"  Placeholder="Password" required [(ngModel)]="loginService.credentials.password">
+          <input (keyup.enter) = "login()" type="password"  Placeholder="Password" required [(ngModel)]="loginService.credentials.password">
       </div>
       <div class="box"><app-photo></app-photo></div>
   </div>
@@ -22,6 +22,9 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     </button>
   </div>
+
+  <span class="triangle-bottom">
+  </span>
 
 </div>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from "./login.service";
-import {Credentials} from "./credentials";
+import {CredentialsResponse} from "./credentialsResponse";
 
 @Component({
   selector: 'app-login',
@@ -22,9 +22,19 @@ export class LoginComponent implements OnInit {
   login(){
     console.log(this.loginService.credentials.username);
     console.log(this.loginService.credentials.password);
-    this.errorMsg = 'Nie rozpoznano twarzy na zdjeciu';
-    //this.loggedIn = 'Zalogowano'
-    this.loginService.login();
+    this.errorMsg = '';
+    this.loggedIn = '';
+    this.loginService.login().subscribe(
+      response => {
+        console.log(response.details);
+        if(response.authorized == 'True'){
+          this.loggedIn = response.details;
+        }
+        else{
+          this.errorMsg = response.details;
+        }
+      }
+    )
   }
 
 }

@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 div.main{
-  background: #00338c; /* Old browsers */
+  background: #f73859; /* Old browsers */
   background: radial-gradient(ellipse at center,  #00338c 1%,#1c2b5a 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0264d6', endColorstr='#1c2b5a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   height:calc(100vh);
@@ -109,3 +109,19 @@ input {
 .alert-container{
   margin-top: 5vh;
 }
+
+.triangle-bottom {
+  width: 200px;
+  height: 200px;
+  background: white;
+  clip-path: polygon(0 0, 0% 100%, 100% 100%);
+}
+
+.triangle-upper {
+  width: 400px;
+  height: 400px;
+  background: white;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+

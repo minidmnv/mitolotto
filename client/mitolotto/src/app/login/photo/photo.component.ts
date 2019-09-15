@@ -1,5 +1,4 @@
 import { Component, OnInit, ElementRef, ViewChild, Output } from '@angular/core';
-import { EventEmitter } from 'events';
 import {LoginService} from "../login.service";
 
 @Component({
@@ -25,6 +24,14 @@ export class PhotoComponent implements OnInit {
 
   photoButton = false;
 
+  checkAccessToCamera(){
+    if(this.video.nativeElement.srcObject == null){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   public ngOnInit() {
   }
 
@@ -45,13 +52,10 @@ export class PhotoComponent implements OnInit {
   }
 
   public reload() {
-    console.log("show button, jaki jest: " + this.photoButton);
     this.video.nativeElement.play();
   }
 
   public capture() {
-    console.log("sassasasas");
-    var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 200, 200);
     this.captures = this.canvas.nativeElement.toDataURL("image/png");
     this.loginService.credentials.image = this.captures;
     this.video.nativeElement.pause();
