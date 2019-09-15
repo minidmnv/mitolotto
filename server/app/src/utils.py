@@ -48,3 +48,8 @@ def decode_img(image_base64):
     image_base64 = image_base64.replace("data:image/png;base64,", "")
     image_base64 = base64.b64decode(image_base64)
     return resize_image(io.BytesIO(image_base64))
+
+
+def encode_img(image):
+    with open(image, "rb") as image_file:
+        return base64.b64encode(image_file.read())
