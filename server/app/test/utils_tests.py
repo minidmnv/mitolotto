@@ -3,7 +3,6 @@ import utils
 import base64
 import io
 
-from os import remove
 from PIL import Image
 from exceptions import NoFaceFoundError
 from exceptions import TooManyFacesFoundError

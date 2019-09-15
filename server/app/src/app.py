@@ -12,25 +12,25 @@ CORS(app)
 @app.route('/authorize', methods=['POST'])
 def authorize():
     user = models.User(request)
-
+    result = False
     try:
         request_face_buffer = utils.decode_img(user.image)
         identity_document_buffer = utils.decode_img(remote.get_document(user.username))
 
-        remote.authorize(user.username, user.password)
+        authorize_result = remote.authorize(user.username, user.password)
         utils.find_face(request_face_buffer)
-        authorize_result = utils.compare_faces(identity_document_buffer, request_face_buffer)
+        compare_result = utils.compare_faces(identity_document_buffer, request_face_buffer)
 
-        if authorize_result:
+        if compare_result and authorize_result:
             details = "success"
+            result = True
         else:
             details = "failed"
 
     except Exception as exception:
-        authorize_result = False
         details = exception.args[0]
 
-    return simplejson.dumps(models.AuthorizeResponse(str(authorize_result), details).__dict__)
+    return simplejson.dumps(models.AuthorizeResponse(str(result), details).__dict__)
 
 
 if __name__ == '__main__':
