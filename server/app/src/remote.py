@@ -1,5 +1,11 @@
+from exceptions import WrongUsernameOrPassword
+
+
 def authorize(username, password):
-    return username == 'username' and password == 'password'
+    if username == 'username' and password == 'password':
+        return True
+    else:
+        raise WrongUsernameOrPassword('Wrong username or password')
 
 
 def get_document(username: str):

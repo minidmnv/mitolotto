@@ -8,3 +8,7 @@ class TooManyFacesFoundError(Exception):
 
 class EmptyOrMissingPictureError(Exception):
     pass
+
+
+class WrongUsernameOrPassword(Exception):
+    pass
