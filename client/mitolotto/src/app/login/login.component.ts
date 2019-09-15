@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   errorMsg= '';
   loggedIn= '';
 
-  constructor(private loginService: LoginService) {
+  constructor(public loginService: LoginService) {
   }
 
   ngOnInit(): void {
