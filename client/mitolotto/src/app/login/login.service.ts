@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {Credentials} from "./credentials";
+import {CredentialsResponse} from "./credentialsResponse";
+import {Observable} from "rxjs";
 
 const endpoint = 'http://localhost:5000/authorize';
 const httpOptions = {
@@ -18,9 +20,9 @@ export class LoginService {
     this.credentials = new Credentials();
   }
 
-  login(){
+  login(): Observable<any>{
     console.log(this.credentials);
-    this.http.post(endpoint,this.credentials, httpOptions).subscribe();
+    return this.http.post(endpoint,this.credentials, httpOptions);
   }
 
 }
