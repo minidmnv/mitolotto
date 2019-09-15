@@ -15,9 +15,11 @@ def authorize():
     result = False
     try:
         request_face_buffer = utils.decode_img(user.image)
-        identity_document_buffer = utils.decode_img(remote.get_document(user.username))
 
-        authorize_result = remote.authorize(user.username, user.password)
+        user_from_mock_api = remote.get_user_from_mock_remote_api(user.username)
+        identity_document_buffer = utils.decode_img(user_from_mock_api.image)
+
+        authorize_result = remote.authorize(user.username, user_from_mock_api.password)
         utils.find_face(request_face_buffer)
         compare_result = utils.compare_faces(identity_document_buffer, request_face_buffer)
 
