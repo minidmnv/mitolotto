@@ -8,3 +8,9 @@
     <button type="button" style='margin: 0vw 0.5vw;' class="btn-light btn-sm" (click)="reload()"><span octicon="sync"></span></button>
   </div>
 
+  <div [hidden] = "!checkAccessToCamera()" class="alert alert-danger text-center alert-container" role="alert" >
+      Give camera access to enable login
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      </button>
+  </div>
+
