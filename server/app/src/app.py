@@ -22,10 +22,10 @@ def authorize():
         compare_result = utils.compare_faces(identity_document_buffer, request_face_buffer)
 
         if compare_result and authorize_result:
-            details = "success"
+            details = "login  successful"
             result = True
         else:
-            details = "failed"
+            details = "login failed"
 
     except Exception as exception:
         details = exception.args[0]
