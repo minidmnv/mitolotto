@@ -3,8 +3,8 @@
   <div class="container middle">
       <div class="form" id="login" style="margin-top: 5vh;">
           <input type="text"  Placeholder="Username" required [(ngModel)]="loginService.credentials.username">
-          <input type="password"  Placeholder="Password" required [(ngModel)]="loginService.credentials.password">
-        <div class="text-center" style="margin-top: 10vh;">
+          <input (keyup.enter) = "login()" type="password"  Placeholder="Password" required [(ngModel)]="loginService.credentials.password">
+        <div class="text-center" style="margin-top: 7vh;">
           <button type="button" class="btn-light btn-lg logButton" (click)="login()">Sign in</button>
         </div>
       </div>

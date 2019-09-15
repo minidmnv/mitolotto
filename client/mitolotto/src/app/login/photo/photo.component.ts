@@ -56,6 +56,7 @@ export class PhotoComponent implements OnInit {
   }
 
   public capture() {
+    this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 200, 200);
     this.captures = this.canvas.nativeElement.toDataURL("image/png");
     this.loginService.credentials.image = this.captures;
     this.video.nativeElement.pause();
