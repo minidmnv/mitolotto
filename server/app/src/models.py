@@ -1,10 +1,6 @@
 class User(object):
-    def __init__(self, data):
-        self.username = data.json['username']
-        self.password = data.json['password']
-        self.image = data.json['image']
-        
-    def __init__(self, username: str, password: str, image: str):
+
+    def __init__(self, username, password, image):
         self.username = username
         self.password = password
         self.image = image
